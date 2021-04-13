@@ -1,4 +1,4 @@
-from arrays import Array
+from array.arrays import Array
 
 """
     Array rotate by num

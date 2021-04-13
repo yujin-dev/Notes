@@ -1,4 +1,4 @@
-from arrays import Array
+from array.arrays import Array
 
 """
     total_sum 에서 각 숫자를 제외하면서 missing number를 찾는 방식

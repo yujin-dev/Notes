@@ -13,7 +13,7 @@ class Node(object):
     def getNext(self):
         return self.next
 
-class LinkedList(object):
+class SinglyLinkedList(object):
 
     def __init__(self):
         self.head = None
@@ -74,7 +74,7 @@ class LinkedList(object):
         return self.search(node.getNext(), data)
 
 if __name__ == "__main__":
-    List = LinkedList()
+    List = SinglyLinkedList()
     List.head = Node(1)
     node2 = Node(2)
     List.head.setNext(node2)
