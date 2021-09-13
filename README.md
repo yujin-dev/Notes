@@ -4,3 +4,4 @@
 
 - OS Overview : https://github.com/yujin-dev/Operating-System/blob/master/Overview.md
 - OS Process & Thread Management : https://github.com/yujin-dev/Operating-System/blob/master/Process-Thread%20Management.md
+- Processs Scheduling: https://github.com/yujin-dev/Operating-System/blob/master/Process-Scheduling.md
