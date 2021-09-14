@@ -27,3 +27,25 @@
 - Mutual Exclusion
 - Progress( 진행 ): Critical Section안에 있는 프로세스 외에는 다른 프로세스가 진입하는 것을 방해하지 않는다.
 - Bounded waiting( 한정대기 )
+
+## SW Algorithm
+
+### Dekker's Algorithm
+Two process Mutual Exclusion을 보장하는 최초의 알고리즘
+
+#### Dijkstra Algorithm
+
+## HW Algorithm
+
+### TestAndSet( TAS ) instruction
+busy waiting의 문제가 있다.
+
+## OS supported SW Algorithm
+### Spinlock
+- 정수 변수
+- 초기화, P(), V() 연산으로만 접근 가능
+
+멀티 프로세서 시스템에서만 사용 가능
+Busy waiting
+
+### Semaphore
