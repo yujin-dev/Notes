@@ -93,4 +93,18 @@ Busy waiting
 - S가 0 이상의 정수값을 가질 수 있는 경우
 - Producer-Consumer 문제 등을 해결하기 위해 사용
 
-#### Mutual Exclusion
+#### 문제 해결
+[ Mutual Exclusion ]
+
+[ Process synchoronization ]
+- Process 들의 실행 순서 맞추기
+
+[ Producer-Consumer ]
+
+- Producer-Consumer problem with single buffer
+
+![](./img/2021-09-15-23-44-40.png)
+
+- Producer-Consumer problem with N-buffers
+
+![](./img/2021-09-15-23-46-59.png)
