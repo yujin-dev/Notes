@@ -31,6 +31,12 @@ Deadlock은 자원과 밀접한 관계를 갖는다.
 - SR( Serially-resuable Resources ), CR( Consumable Resource )은 고려하기 너무 복잡하다.
 - 할당 단위는 상관없다. 
 
+## Deadlock Model
+
+### Graph Model
+### State Transition Model
+
+## Deadlock Prevention
 ### Deadlock을 발생시킬 수 있는 필요 조건
 [ 자원의 특성 ]
 - Non-preemptible resources
@@ -40,9 +46,42 @@ Deadlock은 자원과 밀접한 관계를 갖는다.
 - Hold and wait: 자원을 하나 hold하고 다른 자원 요청하는 경우
 - Circular wait 
 
+Deadlock 예방을 위해서는 위의 필요조건 중 하나를 제거하도록 한다.
 
-## Deadlock Model
+1. 모든 자원을 공유 허용
+- Exclusive allocation resources 조건을 제거
+- 현실적으로 불가능
+2. 모든 자원에 대해 선점 허용
+- Non-preemptible resources 조건을 제거
+- 자원 낭비 발생
+3. 필요 자원을 한번에 모두 할당
+- Hold and wait 조건을 제거
+- 자원 낭비가 발생하고 무한 대기 현상이 발생할 수 있다.
+4. Circular wait 조건을 제거
+- 자원의 순서를 부여하여 요청
+- 자원 낭비 발생
 
-### Graph Model
-### State Transition Model
+Deadlock은 절대 발생하지 않으나 비현실적이고 자원 낭비가 발생한다.
 
+## Deadlock Avoidance
+- 시스템의 상태를 계속 감시하여 deadlock 상태가 될 가능성이 있는 자원 할당 요청을 보류한다.
+- 시스템을 항상 safe state로 유지한다.
+
+[ 가정 ]
+- 프로세스의 수 고정
+- 자원의 종류 및 수 고정
+- 프로세스의 최대 자원 및 수량을 알고 있다.
+- 프로세스는 자원 사용 후 반납한다.
+
+실용적이지는 않다.
+
+#### Safe state
+모든 프로세스가 정상적 종료 가능한 상태로 safe sequence가 존재함을 의미한다.
+
+#### Unsafe state
+Deadlock 상태가 될 가능성이 있다.
+
+### Dijkstra's banker's algorithm
+safe sequence가 있으면 safe state가 될 수 있다.
+
+### Habermann's algorithm
