@@ -24,7 +24,7 @@ swap-in, swap-out
 ## Memory Allocation
 
 ### Continuous Memory Allocation
-프로세스를 하나의 연속된 메모리 공간에 할당하는 정책이다. 
+프로세스를 하나의 연속된 메모리 공간에 할당하는 정책이다. 프로그램 하나가 전체로 메모리에 올라간다.
 
 #### Uni-programming
 프로세스에 한번에 하나만 올라가는 경우(  Multiprogramming degree = 1)
@@ -74,3 +74,71 @@ partion이 요청한 크기에 따라 할당된다.
 
 - Coalescing holes(공간 통합): 인접한 빈 영역을 하나의 partition으로 통합하여 공간을 확보하여 수행한다. 
 - Storage Compaction(메모리 압축): 모든 빈 공간을 하나로 통합한다. 기존의 메모리에서 돌아가던 프로세스를 중지하고 재배치하여 overhead가 크다.
+
+### Non-Continuous Memory Allocation
+가상 메모리가 Non-Continuous Memory 할당에 해당된다.
+
+# Virtual Memory
+프로그램을 여러 개의 block으로 분할하여 메모리에 올라간다.  
+실행 시 필요한 block만 메모리에 적재되고 나머지 block은 swap device( DISK )에 존재한다.
+
+### Address Mapping
+Virtual Address가 Real Address로 변환되는 것을 의미한다.
+- Virtual Address(가상주소): 연속된 메모리 할당을 가정한 주소로 논리주소이다.
+- Real Address(실제주소): 실제 메모리에 적재된 주소
+
+### Block Mapping
+사용자 프로그램은 block단위로 분할 및 관리된다. 
+
+- Virtual address : v=(b,d)
+    - b = block number
+    - d = 시작점(b)으로부터 떨어진 위치( offset )
+
+#### Block map table(BMT)
+kernel공간에 프로세스마다 하나의 BMT를 가진다. 
+
+![](./img/2021-09-20-18-50-18.png)
+
+- residence bit: 메모리에 올라가 있는가에 대한 여부
+
+![](./img/2021-09-20-18-52-02.png)
+
+- b에 실제 메모리에 위치한 주소는 residence bit가 1이므로 real addres + distance인 a+d로 알 수 있다.
+- residence bit = 0인 경우 swap device 에서 해당 블록을 메모리에서 가져와 다음으로 넘어간다.
+
+## [ Virtual Storage Methods ] Paging system
+프로그램을 같은 크기의 block인 pages로 분할한다.
+- page frame: 메모리의 분할 영역으로 page와 같은 크기이다.
+- 논리적 분할이 아닌 크기에 따라 분할한다.
+- external fragmentation이 존재하지 않지만 internal fragmentation이 존재한다.
+
+### Address Mapping
+- Virtual address: v=(p,d)
+    - p: page number
+    - d: displacement(offset)
+- Page Map Table(PMT)를 사용한다.
+![](./img/2021-09-20-19-04-20.png)
+
+#### Direct mapping
+- Block mapping과 유사하다.
+- PMT를 커널 안에 저장된다. 
+
+![](./img/2021-09-20-19-06-17.png)
+
+- b에 실제 메모리에 위치한 주소는 residence bit가 1이므로 page number*page entry + distance인 p*pagesize + d로 알 수 있다.
+- residence bit = 0인 경우(*page fault*) swap device 에서 해당 블록을 메모리에서 가져와 다음으로 넘어간다.
+
+Direct mapping에서는 메모리 접근 횟수가 2배로 증가하여 해결 방안으로 Associative mapping(TLB)를 사용하게 된다. PMT를 참고하고, 메모리 주소를 접근하는데 메인 메모리에 2번 접근하게 된다. 
+page fault가 발생하면 디스크에 접근해야 하므로 overhead가 커진다.
+
+#### Associative mapping
+- TLB(Translation Look-aside Buffer)에 PMT에 적재한다. Associative high-speed memory로 PMT를 병렬 탐색한다.
+- overhead가 적고 속도가 빠르다.
+- 하드웨어가 비싸므로 큰 PMT를 다루기가 어렵다.
+
+####  Hybird Direct/Associative Mapping
+- Direct mapping + Associative Mapping
+- 작은 크기의 TLB를 사용한다: PMT는 메모리(커널)에 저장하고 일부 entry를 PMT에 적재한다.
+- Locality의 특성을 이용해 최근에 사용된 page들을 PMT에 올린다.
+
+### Memory Management
