@@ -107,9 +107,9 @@ kernel공간에 프로세스마다 하나의 BMT를 가진다.
 - residence bit = 0인 경우 swap device 에서 해당 블록을 메모리에서 가져와 다음으로 넘어간다.
 
 ## [ Virtual Storage Methods ] Paging system
-프로그램을 같은 크기의 block인 pages로 분할한다.
+프로그램을 같은 크기의 block인 *page*로 분할한다.
 - page frame: 메모리의 분할 영역으로 page와 같은 크기이다.
-- 논리적 분할이 아닌 크기에 따라 분할한다.
+- 논리적 분할이 아닌 크기에 따라 분할한다. 논리적인 구조를 고려하지 않은 문제가 있다.( Segmentation system이 필요한 이유 )
 - external fragmentation이 존재하지 않지만 internal fragmentation이 존재한다.
 
 ### Address Mapping
@@ -117,6 +117,7 @@ kernel공간에 프로세스마다 하나의 BMT를 가진다.
     - p: page number
     - d: displacement(offset)
 - Page Map Table(PMT)를 사용한다.
+
 ![](./img/2021-09-20-19-04-20.png)
 
 #### Direct mapping
@@ -125,14 +126,15 @@ kernel공간에 프로세스마다 하나의 BMT를 가진다.
 
 ![](./img/2021-09-20-19-06-17.png)
 
-- b에 실제 메모리에 위치한 주소는 residence bit가 1이므로 page number*page entry + distance인 p*pagesize + d로 알 수 있다.
 - residence bit = 0인 경우(*page fault*) swap device 에서 해당 블록을 메모리에서 가져와 다음으로 넘어간다.
+- b에 실제 메모리에 위치한 주소는 residence bit가 1이므로 page number*page entry + distance인 p*pagesize + d로 알 수 있다.
+
 
 Direct mapping에서는 메모리 접근 횟수가 2배로 증가하여 해결 방안으로 Associative mapping(TLB)를 사용하게 된다. PMT를 참고하고, 메모리 주소를 접근하는데 메인 메모리에 2번 접근하게 된다. 
 page fault가 발생하면 디스크에 접근해야 하므로 overhead가 커진다.
 
 #### Associative mapping
-- TLB(Translation Look-aside Buffer)에 PMT에 적재한다. Associative high-speed memory로 PMT를 병렬 탐색한다.
+- TLB(Translation Look-aside Buffer)에 *PMT*에 적재한다. Associative high-speed memory로 PMT를 병렬 탐색한다.
 - overhead가 적고 속도가 빠르다.
 - 하드웨어가 비싸므로 큰 PMT를 다루기가 어렵다.
 
@@ -142,3 +144,78 @@ page fault가 발생하면 디스크에 접근해야 하므로 overhead가 커�
 - Locality의 특성을 이용해 최근에 사용된 page들을 PMT에 올린다.
 
 ### Memory Management
+#### Page Sharing
+여러 프로세스가 특정 page를 공유 가능하다( 프로그램 부분만 할당하기에 가능하다. ).
+프로세스들이 공유되는 page에 대한 정보를 PMT의 같은 entry에 저장한다.
+
+![](./img/2021-09-21-10-20-53.png)
+
+공유하려는 페이지(p')에 대한 이름(entry)을 k라고 통일한다.
+
+#### Page Protection
+여러 프로세스가 page를 공유할 때 접근 권한을 명시하는데 protection bit를 사용한다.
+
+## [ Virtual Storage Methods ] Segmentation system
+프로그램을 논리적 block인 *segment*로 분할한다.
+- block의 크기가 서로 다를 수 있다.
+- 미리 block을 분할하지 않기에 메모리를 미리 분할하지 않는다.
+- paging system에 비해 관리 overhead가 크다.
+ 
+![](./img/2021-09-21-10-30-30.png)
+
+### Address Mapping
+- Virtual address: v=(s,d)
+    - s: segment number
+    - d: displacement(offset)
+- Segment Map Table(SMT)를 사용한다.
+
+![](./img/2021-09-21-10-33-14.png)
+
+- segment length: segement의 크기가 다 다르기에 크기를 기록
+- protection bit: 프로세스에 대한 권한을 기록
+
+#### Direct mapping
+
+![](./img/2021-09-21-10-35-48.png)
+
+- SMT에서 segment s의 entry = b + s*entrySize 
+- residence bit = 0인 경우(*segment fault*) swap device 에서 해당 블록을 메모리에서 가져와 다음으로 넘어간다.
+- d > segment length인 경우 segment overflow exception이 발생한다.
+- protection bit에 따라 허가되지 않은 연산일 경우 segment protection exception이 발생한다.
+
+### Memory Management
+VPM 과 유사하여 segment 적재 시 크기에 맞추어 분할 후 적재한다.
+
+#### Segment Sharing / Protection
+논리적으로 분할되어 있어 공유 및 보호가 용이하다.
+
+## [ Virtual Storage Methods ] Hybrid paging/segmentation system
+
+paging과 segmentation의 장점을 결합한다.
+- page sharing/protection 이 쉽고 메모리 관리 overhead가 작다.
+- external segmentation은 없으나 internal segmentation이 발생할 수 있다.
+- 전체 테이블 수가 증가하여 메모리 소모가 크고 address mapping이 복잡하다.
+
+![](./img/2021-09-21-11-02-22.png)
+
+논리적인 단위의 block으로 분할하고 각 segment를 같은 크기의 page로 잘라 메모리에 올린다.
+
+### Address Mapping
+- Virtual address: v=(s,p,d)
+    - s: segment number
+    - p: page number
+    - d: displacement(offset in a page)
+- SMT, PMT를 모두 사용한다: 각 프로세스마다 하나의 SMT를 갖고 각 segment는 하나의 PMT를 갖는다.
+- 메모리 관리: page가 올라가기에 paging system과 유사하다.
+
+[ SMT ]  
+![](./img/2021-09-21-11-05-23.png)
+
+[ PMT ]  
+![](./img/2021-09-21-11-06-21.png)
+ 
+#### Direct mapping
+
+![](./img/2021-09-21-11-08-15.png)
+
+메모리 접근이 3배로 늘어난다.
