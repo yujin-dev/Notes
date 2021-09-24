@@ -57,8 +57,3 @@ cycle을 허용하기에 파일 탐색 시, infinite loop를 고려해야 한다
 
 #### Lock-key Mechanism
 Access list와 Capability list를 혼합한 개념이다.
-
-### File System Implementation
-
-#### Allocation Methods
-- Continuous Allocation: 파일을 디스크의 연속된 block에 저장한다.
