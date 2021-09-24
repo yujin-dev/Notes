@@ -45,3 +45,20 @@ cycle을 허용하기에 파일 탐색 시, infinite loop를 고려해야 한다
 파일에 대한 부적절한 접근을 방지하여 다중 사용자 시스템에서 필요하다.
 
 ### File Protection Mechanism
+#### Password
+각 파일에 password를 입력
+
+#### Access Matrix
+도메인과 개체 사이의 접근 권한을 명시한다.
+
+- Global Table: 시스템 전체 파일에 대한 권한을 테이블로 유지한다.
+- Access List: Access Matrix의 Column을 list로 표현한다. 파일 생성 시 각 도메인에 대한 권한을 부여한다. 리눅스에서 `ls -a`를 실행할 시 파일마다 표시되는 권한을 나타낸다.
+- Capability List: Access Matrix의  Row를 list로 표현한다. 각 도메인에 대한 파일의 접근 권한을 나열한다.
+
+#### Lock-key Mechanism
+Access list와 Capability list를 혼합한 개념이다.
+
+### File System Implementation
+
+#### Allocation Methods
+- Continuous Allocation: 파일을 디스크의 연속된 block에 저장한다.
