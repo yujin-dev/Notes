@@ -93,4 +93,14 @@ Busy waiting
 - S가 0 이상의 정수값을 가질 수 있는 경우
 - Producer-Consumer 문제 등을 해결하기 위해 사용
 
-#### Mutual Exclusion
+```sh
+function V(semaphore S, integer I):
+    [S ← S + I]
+
+function P(semaphore S, integer I):
+    repeat:
+        [if S ≥ I:
+        S ← S − I
+        break]
+```
+출처: https://en.wikipedia.org/wiki/Semaphore_(programming)
