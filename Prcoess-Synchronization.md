@@ -10,11 +10,11 @@
 - 각 프로세스에서 공유 데이터를 접근하는 프로그램 코드 부분을 의미한다.
 - Machine Instruction: Atomicity, Indivisible의 특징으로 한 기계어 명령의 실행 도중에는 인터럽트 받지 않는다.
 
-![](2021-09-12-20-06-44.png)
+![](./img/2021-09-12-20-06-44.png)
 
 1,2,3,A,B,C은  Machine Instruction로 인해 개입될 수 없다. 1,2,3,A,B,C은 각각 끝날때 preemption이 발생할 수 있는데 순서에 따라 다른 결과가 나올 수 있다.
 
-![](2021-09-12-20-09-44.png)
+![](./img/2021-09-12-20-09-44.png)
 
 Race condition은 동시에 여러 프로세스가 동일한 자료를 접근할 때 접근 순서에 따라 다양하게 변할 수 있음을 의미한다.
 
@@ -104,3 +104,18 @@ function P(semaphore S, integer I):
         break]
 ```
 출처: https://en.wikipedia.org/wiki/Semaphore_(programming)
+#### 문제 해결
+[ Mutual Exclusion ]
+
+[ Process synchoronization ]
+- Process 들의 실행 순서 맞추기
+
+[ Producer-Consumer ]
+
+- Producer-Consumer problem with single buffer
+
+![](./img/2021-09-15-23-44-40.png)
+
+- Producer-Consumer problem with N-buffers
+
+![](./img/2021-09-15-23-46-59.png)
