@@ -109,4 +109,28 @@ fork()를 통해 부모 프로세스에서 자식 프로세스가 생성되는�
 
 데이터와 스택 영역의 메모리 크기는 컴파일 시 미리 결정되나 힙 영역은 런타임 중에 결정된다.
 
-출처: https://armontad-1202.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD
+*[출처] https://armontad-1202.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD*
+
+## 캐시 & 버퍼 메모리
+### 캐시
+CPU와 Main Memory 사이에서 속도 차이에 따른 병목 현상을 줄이기 위한 범용 메모리이다. 데이터의 집중적인 사용으로 전체 시스템에 부하가 생기는 현상을 줄이기 위한 것이다.
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8xRya%2FbtqJ4GJCv9s%2Fl8Ks2YYwkLM3KxKHRkl4oK%2Fimg.png)
+
+CPU에 가까운 캐시일수록 저장 공간이 작고 비용이 비싸지만 성능이 빠르다. 
+캐시는 한 번 사용한 데이터를 다시 사용할 가능성이 높다는 특징으로 데이터 지역성이 높다. 
+
+캐시의 적중률은 캐시를 통해 얼마나 데이터를 잘 찾았는지 정도를 나타낸다.
+- Compulsory miss : 해당 메모리 주소를 처음 부르는 경우
+- Conflict miss : 서로 다른 데이터가 같은 캐시 메모리 주소에 할당되는 경우
+- Capacity miss : 캐시 메모리에 공간이 부족한 경우
+
+### 버퍼
+버퍼는 데이터를 한 곳에서 다른 곳으로 전송할 때 임시적으로 데이터를 보관하는 메모리 영역이다. 
+따라서 사용 후 버퍼는 데이터를 폐기한다.
+
+버퍼는 캐시에 비해 처리하는데 드는 리소스 크기가 큰 편이기에 모든 데이터를 저장할 순 없다. 
+캐시는 처리 속도를 올리기 위한 것으로 주로 속도가 빠른 장치에 사용된다면 버퍼는 처리 속도가 떨어지는 것을 방지하기 위한 것으로 주로 속도가 느린 장치에 활용된다.
+따라서 캐시와 버퍼는 주로 read/write에 사용된다.
+
+*[출처] https://beenii.tistory.com/101*
