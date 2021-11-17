@@ -109,7 +109,7 @@ fork()를 통해 부모 프로세스에서 자식 프로세스가 생성되는�
 
 데이터와 스택 영역의 메모리 크기는 컴파일 시 미리 결정되나 힙 영역은 런타임 중에 결정된다.
 
-*[출처] https://armontad-1202.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD*
+*(출처) https://armontad-1202.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%98%81%EC%97%AD*
 
 ## 캐시 & 버퍼 메모리
 ### 캐시
@@ -133,4 +133,8 @@ CPU에 가까운 캐시일수록 저장 공간이 작고 비용이 비싸지만 
 캐시는 처리 속도를 올리기 위한 것으로 주로 속도가 빠른 장치에 사용된다면 버퍼는 처리 속도가 떨어지는 것을 방지하기 위한 것으로 주로 속도가 느린 장치에 활용된다.
 따라서 캐시와 버퍼는 주로 read/write에 사용된다.
 
-*[출처] https://beenii.tistory.com/101*
+*(출처) https://beenii.tistory.com/101*
+
+## Random Access Memory
+
+Random Access는 어디로든 똑같은 시간으로 접근 가능하다는 의미로 메모리의 주소만 알고 해당 주소를 지정하면 바로 접근 가능하다.
