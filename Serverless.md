@@ -36,3 +36,7 @@ read/write throughput에 따라 요금이 다르다.
     - 예측할 수 없는 workloads일 때 사용하며 2-3배 더 비싸다.
 
 ### DynamoDB Accelerator(DAX)
+
+## Lambda
+**[Serverless CRON]**
+ex. CloudWatch를 통해 이벤트 발생을 탐지하고 AWS Lambda function에서 처리하도록 한다.
