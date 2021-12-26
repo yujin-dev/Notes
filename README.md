@@ -1,5 +1,6 @@
 
-
+# AWS Solutions Architect Associate Certificate
+자격증 준비를 위한 Udemy 강의를 정리
 ### IAM
 IAM은 Identity and Access Management, global service를 의미한다.
 
