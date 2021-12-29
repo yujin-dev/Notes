@@ -35,6 +35,9 @@ SSH로 EC2 인스턴스에 접속하기 위해서는 보안 그룹에서 프로�
 ### private vs. public vs. Elastic IP
 
 ### EC2 Placement Groups
+- Cluster : great network
+- Spread 
+- Partition
 
 ### Elastic Network Interfaces(ENI)
 
