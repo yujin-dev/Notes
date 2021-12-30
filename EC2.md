@@ -42,3 +42,23 @@ SSH로 EC2 인스턴스에 접속하기 위해서는 보안 그룹에서 프로�
 ### Elastic Network Interfaces(ENI)
 
 ### EC2 Hibernate
+
+## EC2 Instance Storage
+
+### EBS
+
+### EBS Snanpshot
+
+### AMI
+
+### EC2 Instance Store
+
+### EBS Volume Types
+
+### EBS Multi-Attach
+
+### EBS Encryption
+
+### EFS
+
+### EFS vs. EBS 
