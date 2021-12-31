@@ -9,6 +9,7 @@ IAM user를 보호하기 위한 수단은 2가지가 있다.
 2. MFA( Multi Factor Auethentication ) : password + security device 
     - Root 계정과 IAM user를 보호
     - Google Authenticator, Authy 등 virtual MFA가 있고, third party가 있다.
+
 ### IAM Roles
 aws service에 접근하려 할때 IAM roles이 있는 경우에 가능하다.
 
@@ -20,7 +21,9 @@ EC2는 Elastic Compute Cloud로 인프라를 서비스로 제공하는 것이다
 - ELB( Elastic Load Balancer )로 machines 간 Load를 분산
 - auto-scaling group인 ASG로 서비스를 scaling
 
-## [Amazon S3](https://github.com/yujin-dev/AWS-Tutorial/blob/master/Amazon_S3.md)
+## [ELB-ASG](https://github.com/yujin-dev/AWS-Tutorial/blob/master/ELB_ASG.md)
+
+## [Amazon S3](https://github.com/yujin-dev/AWS-Tutorial/blob/master/S3.md)
 AWS의 building blocks 개념이다.
 
 
