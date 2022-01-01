@@ -67,15 +67,25 @@ EC2 Instances의 내부로, 외부를 허용하는 traffic에 대한 제어를 �
 브라우저에서 EC2 instance에 접속할 수 있다. key file은 필요없다.
 마찬가지로 port 22는 열려있어야 한다.
 
-### EC2 Instance Lanch Types
+### EC2 Instances puchasing options
+- On Demand : short workload, predictable pricing
+- Reserved : 최소 1년, long workload
+- Spot Instances : short workload, highest discount, max price가 현재의 spot price보다 낮으면 instance가 없어질 수 있음.  
+    - batch jobs, data analysis 등에 적합
+    - critical jobs / DB에는 적합하지 않음
+
+- Dedicated Hosts : physical server
+- Dedicated Instances : hardware를 공유하지 않음
+
 
 ### Spot Instances & Spot Fleet
+Spot Fleets : Sport Instances의 묶음 + On-Demand Instances
+- 가격 제한에서 target capacity를 맞추고자 한다.
 
-### EC2 Instances puchasing options
-- On Demand : short workload, 
-- Reserved : long workload
-- Spot Instances : short workload, highest discount
-- Dedicated Hosts : physical server
+Spot Instances를 할당하는데는 전략이 있다.
+- lower price
+- diversified
+- capacityOptimized
 
 ### private vs. public vs. Elastic IP
 
