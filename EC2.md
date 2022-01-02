@@ -142,21 +142,56 @@ hardware에 instance를 분산시킨다.
 ### Elastic Network Interfaces(ENI)
 
 ![](./img/2022-01-02-09-18-15.png)
-- parim 
+- 하나의 AZ에만 bound된다.
 
 ### EC2 Hibernate
+- RAM state가 유지되어 instance 부팅이 빨라진다.
+- RAM state는 root EBS volume에 파일로 쓰여진다.
+- root EBS volume은 encrypted
+- 오래 걸리는 처리나 RAM state를 저장할 때 사용된다.
+
+### Nitro
+higher speed EBS 등 더 좋은 성능을 제공한다.
+
+### vCPU
+- 하나의 CPU에 여러 threads( multithreading )
+- 4 CPU * 2 threads = 8 vCPU
+- CPU당 하나의 thread만 부여하여 multithreading을 쓰지 않고 high performance computing(HPC) workload에 사용
 
 ## EC2 Instance Storage
 
 ### EBS
+- EBS volume은 instance에 붙여 사용할 수 있는 network drive이다.
+- 한번에 하나의 인스턴스에만 mount 가능하다.
+- 특정 AZ에서만 사용 가능하다. 다른 AZ에서 사용하려면 snapshot이 필요하다.
+
+EC2 instance 종료시, 
+- default로, root EBS volume은 삭제된다.
+- default로, 할당된 EBS volume은 삭제되지 않는다.
 
 ### EBS Snanpshot
+특정 시점의 EBS volume의 backup(snapshot)이다.
+다른 AZ나 region에 copy해서 사용할 수 있다.
 
 ### AMI
+AMI는 Amazon Machine Image로, EC2 instance의 customization이다.
+- 특정 region에서만 생성된다. 
+- public AMI, AWS marketplace AMI, 스스로 만든 AMI에서 생성 가능하다.
 
 ### EC2 Instance Store
+높은 성능의 hardware disk이다. ( EBS volume은 제한된 성능의 네트워크 드라이브이다. )
+- better I/O performance
+- EC2 instance가 중단되면 storage를 잃는다.
+- buffer / cache / scratch data / temporary data에 주로 사용된다.
 
 ### EBS Volume Types
+EBS volume은 size / throughput / IPOS에 따라 선택할 수 있다.
+- gp2 / gp3 (SSD) : cost effective , low-latency. system boot volumnes 등에 사용할 수 있다.
+- io1 / io2 (SSD) : 일정한 IOPS 성능을 제공한다. database workloads에 적합하다.
+- st1 (HDD) : boot volume으로 사용할 수 없다. throughput optmized HDD
+- sc1 (HDD) : boot volume으로 사용할 수 없다. Cold HDD
+
+(참고) https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
 ### EBS Multi-Attach
 
