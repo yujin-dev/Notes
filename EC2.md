@@ -267,3 +267,43 @@ health check를 통해 load balancer가 인스턴스가 traffic을 감당하는�
 - ex. Firewalls, Intrusion Detection, ..
 - IP는 private IP이어야 함
 
+### Sticky Sessions
+sticky sessions : 같은 client가 load balancer를 통해도 동일한 instance로 redirect하도록 함
+- CLB, ALB에서는 가능
+- *cookies*는 만료일자가 있음
+
+#### Cookies
+- Application-based
+    - custom cookie: target엣 의해 생성된 custom cookie
+    - application cookie : load balancer에 의해 생성된 cookie
+- Duration-based : load balancer에 의해 생성된 cookie
+
+### Cross-Zone Load Balancing
+![](./img/2022-01-02-15-57-30.png)
+
+### SSL
+#### SSL vs. TLS
+- SSL은 Secure Sockets Layer로 connections을 암호화한다.
+- TLS는 Transport Layer Security
+
+#### SSL Certificates
+![](./img/2022-01-02-16-03-19.png)
+
+#### SNI( Server Name Indication )
+
+### Connection Draining
+
+### Auto Scaling Group( ASG )
+- load에 따라 scale in/out하여 instance를 추가하거나 제거함
+- 자동으로 load balancer에 새로운 instance를 등록
+- CloudWatch 알람으로 모니터링 가능하여 전체 ASG instance를 대상으로 metric이 계산됨
+
+#### Dynamic Scaling Policies
+- Target Tracking Scaling
+- Simple / Step Scaling
+- Scheduled Actions
+
+#### Good metrics to scale on
+- CPUUtilization
+- RequestCountPerTarget
+- Aerage Network In / Out
