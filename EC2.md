@@ -194,32 +194,76 @@ EBS volume은 size / throughput / IPOS에 따라 선택할 수 있다.
 (참고) https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
 ### EBS Multi-Attach
+같은 AZ내의 여러 인스턴스에 동일한 EBS volume을 할당할 수 있다.
 
 ### EBS Encryption
+- 모든 snapshots은 암호화
+- 모든 volumes는 암호화
+- volume내 데이터는 암호화
 
-### EFS
+1. volume의 EBS snapshot을 생성한다.
+2. EBS snapshot 암호화
+3. snapshot으로부터 새로운 EBS volume을 생성한다.
+4. 인스턴스에 암호화된 volume을 할당한다.
 
-### EFS vs. EBS 
+### EFS( Elastic File System )
+
+![](./img/2022-01-02-15-24-36.png)
+
+- 여러 EC2에 마운트할 수 있는 managed NFS( network file system )
+- 여러 AZ에 인스턴스와 연동 가능
+- content 관리나 web serving, data sharing 등에 사용된다.
+- POSIX file system : Linux AMI에만 호환 가능하다
+
+
+### EFS vs. EBS
+EFS와 다르게 EBS volume은,
+- 한번에 하나의 인스턴스에만 할당 가능
+- 하나의 AZ에만 사용 가능
+- AZ를 이전하려면 snapshot을 생성하여 다른 AZ에서 복구해야 한다. 
 
 ## High Availability and Scalability : ELB & ASG
+scalability는 application이나 system이 많은 로드를 처리하는 것을 의미한다.
 
-### High Availability and Scalability
+다음과 같이 2가지로 구분된다.
+- vertical scalability : 인스턴스 자체의 크기를 늘린다. RDS, ElastiCache 같은 서비스 scale을 확장
+- horizontal scalability : 인스턴스의 수를 늘린다. 분산 시스템
+
+high availability는 주로 horizontal scalability와 쓰인다. 최소 2개의 data centers(AZ)에서 시스템을 실행시킨다.
 
 ### ELB( Elastic Load Balancing )
+load balances는 여러 서버( ex. EC2 instances )에 traffic을 분산시키는 서버이다.
+- 단일 point of access(DNS)를 노출시킨다.
+- downstream instance의 failure를 처리한다.
+- SSL termination(HTTPS)을 제공한다.
+- high availability
 
-#### Cross Zone Load Balancing
-#### SSL Certificates
-#### Connection Draining
+ELB는 managed load balancer이다. 
+health check를 통해 load balancer가 인스턴스가 traffic을 감당하는지 알 수 있다.
 
+### AWS's managed load balancers
+- CLB( classic Load Balancer ) : 2009, HTTP/HTTPS/TCP/SSL
+- ALB( Application Load Balancer ) : 2016, HTTP/HTTPS/Websocket
+- NLB( Network Load Balancer ) : 2017, TCP/TLS/UDP
+- GWLB( GateWay Load Balancer ) : 2020, layer3(Network Layer)
 
-### CLB( Classic Load Balancer )
+#### CLB( v1 )
 
-### ALB( Application Load Balancer )
+#### ALB( v2 )
+![](./img/2022-01-02-15-45-25.png)
+- 고정된 hostname
+- 여러 target groups에 라우팅
+- ECS나 docker에 적합
+- redirection을 지원
 
-### NLB( Network Load Balancer )
+#### NLB( v3 )
+![](./img/2022-01-02-15-48-53.png)
 
-### GWLB( Gateway Load Balancer )
+- AZ당 하나의 static IP, Elastic IP 할당 가능
+- TCP, UDP을 지원하여 성능이 좋음
+- 
+#### GWLB( v4 )
+- 3rd party network virtual appliances fleet을 관리
+- ex. Firewalls, Intrusion Detection, ..
+- IP는 private IP이어야 함
 
-### ASG ( Auto Scaling Groups )
-
-#### Scaling Policies 
