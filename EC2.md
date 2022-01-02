@@ -88,13 +88,61 @@ Spot Instances를 할당하는데는 전략이 있다.
 - capacityOptimized
 
 ### private vs. public vs. Elastic IP
+- IPv4 : 1.16.10.240
+- IPv6 : 3ffe:1900:4545:3:200:f8ff:fe21:67cf
+
+IPv4가 가장 보통의 형식으로 [0-255].[0-255].[0-255].[0-255]. 으로 이루어진다.
+
+#### public IP
+- internet(WWW)에서 식별 가능한 IP
+- 전체 웹에서 고유해야 한다.
+
+#### private IP
+- private network에서만 식별 가능하다.
+- private network만에서 고유하면 된다.
+- NAT + internet gateway로 인터넷에 연결된다.
+
+#### Elastic IP
+EC2 instance를 멈추거나 시작하는 경우 public IP가 바뀐다. 고정된 public IP를 가지기 위해서는 Elastic IP가 필요하다.
+- 하나의 instance에만 붙여서 사용할 수 있다.
+- account당 5개까지만 Elastic IP를 가질 수 있다.
 
 ### EC2 Placement Groups
-- Cluster : great network
-- Spread 
-- Partition
+
+#### Cluster
+하나의 Availability Zone의 low-latency group에서 instance를 클러스터링한다.
+
+![](./img/2022-01-02-09-08-55.png)
+
+- network 성능이 좋다( 10 Gbps bandwidth )
+- rack failure가 발생하면 모든 인스턴스가 failure.
+- 빨리 끝내야 하는 Big Data Job이나 low-latency, high network throughput가 필요한 경우에 주로 사용된다.
+
+#### Spread
+hardware에 instance를 분산시킨다.
+
+![](./img/2022-01-02-09-09-47.png)
+- 여러 Availability Zones에서 분산된다.
+- 여러 physical hardware에 instance를 생성한다.
+- placement group에서 AZ당 인스턴스 7개까지만 지원된다.
+- high availability가 필요하거나 failure를 방지하기 위해 서로 분리가 필요한 경우
+
+#### Partition
+여러 partitions를 분산시킨다.
+
+![](./img/2022-01-02-09-14-48.png)
+
+- AZ당 partitions 7개까지만 지원된다.
+- 같은 region에서 여러 AZ에 분산시킬 수 있다.
+- 100 EC2 instances까지 지원된다.
+- partition failure는 여러 EC2에 영향을 미치지만 다른 partitions엔 영향을 주지 않음
+- metadata같은 정보를 갖고 있다.
+- HDFS, HBase, Cassandra, Kafka를 사용하는 경우에 주로 사용한다.
 
 ### Elastic Network Interfaces(ENI)
+
+![](./img/2022-01-02-09-18-15.png)
+- parim 
 
 ### EC2 Hibernate
 
