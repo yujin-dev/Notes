@@ -1,4 +1,7 @@
 # Serverless
+서비리스는 서버를 관리할 필요없이 서비스를 Function으로 배포한다.
+AWS에서는 AWS Lambda, DynamoDB, AWS API Gateway, Amazon S3 등이 있다.
+
 
 ## DynamoDB
 
