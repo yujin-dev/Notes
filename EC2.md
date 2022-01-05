@@ -284,22 +284,32 @@ sticky sessions : 같은 client가 load balancer를 통해도 동일한 instance
 ### SSL
 #### SSL vs. TLS
 - SSL은 Secure Sockets Layer로 connections을 암호화한다.
-- TLS는 Transport Layer Security
+- TLS는 Transport Layer Security( 최신 버전 )
 
 #### SSL Certificates
 ![](./img/2022-01-02-16-03-19.png)
 
+
 #### SNI( Server Name Indication )
+- SNI는 하나의 웹 서버에 여러 SSL certificate 로딩을 위함
+- client가 hostname을 표시하도록 함
+- ALB, NLB에만 작동함( Not CLB )
 
 ### Connection Draining
+- Connection Draining - CLB
+- Deregistration Delay - ALB, NLB
+
 
 ### Auto Scaling Group( ASG )
 - load에 따라 scale in/out하여 instance를 추가하거나 제거함
 - 자동으로 load balancer에 새로운 instance를 등록
 - CloudWatch 알람으로 모니터링 가능하여 전체 ASG instance를 대상으로 metric이 계산됨
 
+#### Auto Scaling Custom Metric
+custom metric에 따라 스케일을 자동 조정할 수 있음
+
 #### Dynamic Scaling Policies
-- Target Tracking Scaling
+- Target Tracking Scaling 
 - Simple / Step Scaling
 - Scheduled Actions
 
@@ -307,3 +317,5 @@ sticky sessions : 같은 client가 load balancer를 통해도 동일한 instance
 - CPUUtilization
 - RequestCountPerTarget
 - Aerage Network In / Out
+
+##### Cooldowns
