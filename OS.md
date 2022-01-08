@@ -1,6 +1,6 @@
 # About OS
-## Overview 
-### 컴퓨터 시스템의 기본 구성
+
+## 컴퓨터 시스템의 기본 구성
 - 하드웨어
 - 운영체제
 - 응용 프로그램
@@ -134,7 +134,83 @@ CPU에 가까운 캐시일수록 저장 공간이 작고 비용이 비싸지만 
 따라서 캐시와 버퍼는 주로 read/write에 사용된다.
 
 *(출처) https://beenii.tistory.com/101*
+*(참고)*
+- 쓰기 버퍼 : https://www.netinbag.com/ko/internet/what-is-a-write-buffer.html
 
-## Random Access Memory
+### Random Access Memory
 
 Random Access는 어디로든 똑같은 시간으로 접근 가능하다는 의미로 메모리의 주소만 알고 해당 주소를 지정하면 바로 접근 가능하다.
+
+## 파일 입출력 시스템
+- 유닉스에서는 모든 것을 파일로 취급( virtual file system )
+- network를 사용한다는 것도 socket 파일을 열고 읽고 쓰는 개념으로 적용됨
+
+Example> 표준입력/출력/에러를 이용한 간단한 나눗셈
+```c
+int main()
+{
+    int a;
+    int b;
+    char buf[80];
+
+    read(STDIN, buf, 80);
+    a = atoi(buf);
+
+    read(STDIN, buf, 80);
+    b = atoi(buf);
+    if (b==0) 
+    {
+        write(STDERR, ERRMSG, strlen(ERRMSG)); // 표준에러면 buffer를 사용하지 않고 바로 출력
+        return 1;
+    }
+    sprintf(buf, "%d/%d = %d", a, b, int(a/b));
+    
+    write(STDOUT, buf, strlen(buf)); // 표준출력이면 buffer를 사용, write하여 출력
+    return 0;
+}
+```
+
+Example> `read()` operaion
+```c
+# define MAXLEN 80
+
+int main()
+{
+    int fd; // file description
+    int readn = 0;
+    char buf[MAXLEN];
+    fd = open("test.txt", 0_RDONLY); // read-only
+    if(fd<0>)
+    {
+        perror("File Open Error");
+        return 1;
+    }
+    memset(buf, 0x00, MAXLEN); // 처음 buf를 정의하면 가바지 값이 들어감
+    while((readn=read(fd, buf, MAXLAEN-1))>0)
+    {
+        printf("%s", buf);
+    }
+}
+```
+
+Example> `write()` operation
+```c
+int main() {
+    int fd;
+    int i;
+    int wdate = 0;
+    int wsize = 0;
+    fd = open("test.txt", 0_CREAT | 0_WRONLY);
+    if (fd<0) {
+        perror("File Open Error");
+        return 1;
+    }
+    for (i=0; i<100; i++) {
+        wdata = i*2;
+        wsize = write(fd, (void*)&wdata, sizeof(int));
+        printf("Write %d(%d byte)", wdata, wsize);
+    }
+    close(fd);
+}   
+```
+
