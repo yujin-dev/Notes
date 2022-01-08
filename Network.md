@@ -65,4 +65,22 @@ SSL은 보안을 위해 개발한 통신 layer이다. HTTPS는 SSL위에 HTTP를
 - https://joshua1988.github.io/web-development/http-part1/
 - https://velog.io/@dnjscksdn98/HTTP-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC
 
-## REST
+## OSI 7 Layer - TCP/IP
+### OSI 7 Layer
+
+[ User Process ]
+
+1. Application : Email, FTP, Web Browser
+2. Presentation 
+3. Session : 논리적 접속
+
+[ Kernel ]
+
+4. Transport : TCP/UDP 프로토콜을 활용, 양쪽 간의 신뢰성 보장
+5. Network : IP주소( IPv4, IPv6 ) 체계에 따라 경로 설정
+6. Datalink : 두 node간 통신
+7. Physical : 이진bit로 전달
+
+
+#### Physical( 물리 계층 )
+![](./png/2022-01-08-17-21-58.png)
