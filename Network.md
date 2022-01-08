@@ -66,21 +66,61 @@ SSL은 보안을 위해 개발한 통신 layer이다. HTTPS는 SSL위에 HTTP를
 - https://velog.io/@dnjscksdn98/HTTP-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC
 
 ## OSI 7 Layer - TCP/IP
-### OSI 7 Layer
+![](https://t1.daumcdn.net/cfile/tistory/99F6363359FDDC9E1F)
+
+*(출처) https://mangkyu.tistory.com/15*
+*(참고) https://helloworld-88.tistory.com/146*
+
+### OSI 7 Layers
 
 [ User Process ]
 
-1. Application : Email, FTP, Web Browser
+1. Application : Email, FTP, ..
 2. Presentation 
 3. Session : 논리적 접속
 
 [ Kernel ]
 
 4. Transport : TCP/UDP 프로토콜을 활용, 양쪽 간의 신뢰성 보장
-5. Network : IP주소( IPv4, IPv6 ) 체계에 따라 경로 설정
+5. Network : IP 주소 체계( IPv4, IPv6 )에 따라 경로 설정
 6. Datalink : 두 node간 통신
 7. Physical : 이진bit로 전달
 
 
 #### Physical( 물리 계층 )
 ![](./png/2022-01-08-17-21-58.png)
+
+
+## TCP vs. UDP
+
+### TCP
+TCP는 인터넷 상에서 데이터를 메시지 형태로 보내기 위해 IP와 함께 사용하는 프로토콜이다.
+일반적으로 IP와 함께 사용하는데 TCP는 패킷을 추적, 관리한다.  
+![](https://t1.daumcdn.net/cfile/tistory/991BEB3359FEB5712F)
+
+
+- 연결형 서비스로, 가상 회선 방식을 제공(발신지 - 수신지를 연결하여 논리적 경로를 배정)
+- 연결은 3-way handshaking( 목적지와 수신지를 확실히 하여 정확한 전송을 보장하고자 )으로, 해제는 4-way handshaking로 한다.
+- 높은 신뢰성
+- UDP보다 속도는 느림
+- Point to point 방식
+- 서버 : 클라이언트 연결이 1:1 연결
+
+[ TCP Flow ]  
+![](https://t1.daumcdn.net/cfile/tistory/99C5C63359FEB5DC06)
+
+
+#### UDP
+UDP는 데이터를 데이터그램(독립적인 관계를 지닌 패킷) 단위로 처리하는 프로토콜이다.  
+![](https://t1.daumcdn.net/cfile/tistory/9969973359FEB59309)
+
+- 비연결형 서비스로, 데이터그램 방식을 제공
+- UDP 헤더의 CheckSum 필드를 통해 최소한의 오류만 검출
+- 낮은 신뢰성
+- TCP보다 속도가 빠름( 실시간 서비스에 주로 사용 )
+- 서버 : 클라이언트는 N:M 연결이 가능
+
+[ UDP Flow ]  
+![](https://t1.daumcdn.net/cfile/tistory/9934293359FEB5EE38)
+
+*(출처) https://mangkyu.tistory.com/15*
