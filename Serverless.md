@@ -80,7 +80,7 @@ Global Secondary Indexes(GSI) & Local Secondary Indexes(LSI)
 ![](./img/2022-01-06-20-36-52.png)
 
 ## API Gateway
-- ex. AWS Step Function workflow, SQS에 메per reg시지 전송
+- ex. AWS Step Function workflow, SQS에 메시지 전송
 
 ### Serverless API
 
