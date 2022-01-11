@@ -124,3 +124,15 @@ UDP는 데이터를 데이터그램(독립적인 관계를 지닌 패킷) 단위
 ![](https://t1.daumcdn.net/cfile/tistory/9934293359FEB5EE38)
 
 *(출처) https://mangkyu.tistory.com/15*
+
+## NAT
+NAT(Network Address Translation)은 패킷의 IP주소, 포트 등을 변환하는 방안이다.
+
+- NAT는 private network가 외부 public network와 통신하기 위해 사용된다.
+- 외부와 통신할 때 패킷에 기록된 IP, 포트를 변환하여 외부에서 활용할 수 있는 Public IP로 변환한다.
+
+### AWS NAT
+- NAT Instance
+- NAT Gateway
+
+*(출처) https://velog.io/@wowtjdwo/NAT%EC%99%80-IGW*
