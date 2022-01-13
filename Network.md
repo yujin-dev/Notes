@@ -136,3 +136,8 @@ NAT(Network Address Translation)은 패킷의 IP주소, 포트 등을 변환하�
 - NAT Gateway
 
 *(출처) https://velog.io/@wowtjdwo/NAT%EC%99%80-IGW*
+
+
+## XML vs. SOAP
+- XML(EXtensible Markup Language)은 데이터와 텍스트를 인코딩하는 간단한 표준 방식을 제공하여 하드웨어, OS, application 간에 교환 가능한 마크업 언어이다.
+- SOAP은 XML기반의 통신 프로토콜이다.
