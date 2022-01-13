@@ -8,16 +8,17 @@ IAM(Identity Access Management)은 Identity and Access Management, global servic
 
 ### IAM Policies
 
-### Structure
-consist of
+### Policy Structure
+![](./2022-01-13-13-54-21.png)
+
 - Version
 - ID
 - Statement
     - Sid
-    - Effect
-    - Principal
-    - Action
-    - Resource
+    - Effect : allow OR deny
+    - Principal : account/user/role 
+    - Action : list of actions
+    - Resource : list  of resources
     - Condition
 
 ### IAM MFA
