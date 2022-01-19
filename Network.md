@@ -141,3 +141,19 @@ NAT(Network Address Translation)은 패킷의 IP주소, 포트 등을 변환하�
 ## XML vs. SOAP
 - XML(EXtensible Markup Language)은 데이터와 텍스트를 인코딩하는 간단한 표준 방식을 제공하여 하드웨어, OS, application 간에 교환 가능한 마크업 언어이다.
 - SOAP은 XML기반의 통신 프로토콜이다.
+
+
+## TLS/SSL/HTTPS
+- TLS/SSL은 TCP/IP 네트워크 통신에 적용되는 보안을 위한 암호 규약이다.
+- HTTPS는 HTTP 통신에서 암호화되는 규약이다.
+
+### 암호화
+- 대칭키
+    ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1qb4Z%2FbtqGfNniI1P%2FJIx3kglkOTpXZeT9WEOsUK%2Fimg.png)
+
+- 비대칭키 : 한 쌍의 키로 암호화, 복호화를 하는 방식은 RSA 알고리즘이라 한다.
+    ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcG84VM%2FbtqGnJpEXsr%2FJVefe1KT14Yo7nqkuhRzX0%2Fimg.png)
+
+TLS는 RSA 비대칭키 방식을 이용하여 대칭키를 공유하고, 실제 통신은 CPU 리소스가 적은 대칭키로 데이터를 주고 받는다.
+
+*(출처) https://babbab2.tistory.com/4*
