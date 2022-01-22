@@ -1,4 +1,4 @@
-# EC2
+# EC2 [ Udemy ]
 ### EC2( Elastic Compute Cloud )
 - virtual machines를 빌려주고(EC2)
 - virtual drives에 데이터를 저장하고(EBS)
