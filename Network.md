@@ -257,3 +257,5 @@ ListPeople(address_book)
 ```    
 
 *(출처) https://developers.google.com/protocol-buffers/docs/pythontutorial*
+*참고*
+- Protocol Buffers vs. Pickle : https://groups.google.com/g/protobuf/c/6E2JkgFWtfY
