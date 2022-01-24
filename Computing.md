@@ -1,4 +1,5 @@
-# EC2 [ Udemy ]
+# EC2 
+>>Udemy
 ### EC2( Elastic Compute Cloud )
 - virtual machines를 빌려주고(EC2)
 - virtual drives에 데이터를 저장하고(EBS)
@@ -318,7 +319,10 @@ custom metric에 따라 스케일을 자동 조정할 수 있음
 - RequestCountPerTarget
 - Aerage Network In / Out
 
-# Lambda[ Udemy ]
+
+# Lambda
+
+>>Udemy
 ### vs. EC2
 - EC2 : virtual cloud / RAM, CPU에 제한 / 계속 실행됨 / 스케일링 직접 해야
 - Lambda : virtual functions / 짧은 실행 / on-demand / 자동 스케일링

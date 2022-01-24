@@ -6,7 +6,8 @@ AWS에서는 AWS Lambda, DynamoDB, AWS API Gateway, Amazon S3 등이 있다.
 - FaaS( Function as a Service )
 - No Server가 아니라 manage, provision할 필요가 없다는 의미
 
-# RDS [ Udemy ]
+# RDS 
+>>Udemy
 RDS is Relational Database Serive., managed DB service for DB use SQL as query
 
 ### EC2 인스턴스에 DB 배포하는 경우와 비교하여 
@@ -60,7 +61,8 @@ RDS is Relational Database Serive., managed DB service for DB use SQL as query
 - MySQL, PostgreSQL에 작동
 - 비밀번호 필요없이 IAM & RDS API call로 token 획득 가능
 
-# Aurora [ Udemy ]
+# Aurora
+>>Udemy
 - PostgreSQL, MySQL 지원 가능
 - Aurora는 AWS cloud에 최적화된 RDB
 - HA native라 failover에 즉각 반응
@@ -87,7 +89,8 @@ aurora instances의 일부를 custom endpoints를 적용 가능
 ### Multi-Master
 write node에 대한 즉각적인 failover를 원하는 경우
 
-# ElastiCache [ Udemy ]
+# ElastiCache 
+>>Udemy
 - 완전관리형 Redis, Memcached를 위한 서비스로 in-memory database 캐쉬로 사용함( low latency )
 - database 로드를 줄여줌
 - lazy loading 
@@ -123,7 +126,8 @@ write node에 대한 즉각적인 failover를 원하는 경우
 - Redist AUTH : redis cluster에 대한 password/token 설정 가능
 - memcached : SASL-based 인증 지원
 
-# DynamoDB [ Udemy ]
+# DynamoDB
+>>Udemy
 
 **[특징]**
 - NoSQL 데이터베이스
