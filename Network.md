@@ -157,3 +157,103 @@ NAT(Network Address Translation)은 패킷의 IP주소, 포트 등을 변환하�
 TLS는 RSA 비대칭키 방식을 이용하여 대칭키를 공유하고, 실제 통신은 CPU 리소스가 적은 대칭키로 데이터를 주고 받는다.
 
 *(출처) https://babbab2.tistory.com/4*
+
+## Protocal Buffers
+프로토콜 버퍼란 구글에서 개발한 구조화된 데이터를 직렬화하기 위한 프로토콜이다.
+- 파이썬에서는 pickling을 사용 : 언어에 내장되어 있지만 다른 언어간 호환이 되지 않음
+
+###  예시 
+주소록 파일에 개인 정보 기록하기 
+
+#### 프로토콜 형식 정의
+`addressbook.proto` 메시지를 정의한다.
+
+```.proto
+syntax = "proto2";
+
+package tutorial;
+
+message Person { // 메시지 정의
+    optional string name = 1; 
+    optional int32 id = 2;
+    optional string email = 3;
+
+    enum PhoneType {
+        MOBILE = 0;
+        HOME = 1;
+        WORK = 2;
+    }
+    message PhoneNumber {
+        optional string number = 1;
+        optional PhoneType type = 2 [default = HOME];
+    }
+    
+    repeated PhoneNumber phones=4;
+}
+
+message AddressBook {
+    repeated Person people = 1;
+}
+```
+#### 프로토콜 버퍼 컴파일
+1. 컴파일러 패키지를 설치
+2. `protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/addressbook.proto`
+
+#### 프로토콜 버퍼 API
+python에서 buffer compiler는 데이터 접근 코드를 직접 생성하지 않고 descriptors를 통한다.
+
+```python
+class Person(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+
+  class PhoneNumber(message.Message):
+    __metaclass__ = reflection.GeneratedProtocolMessageType
+    DESCRIPTOR = _PERSON_PHONENUMBER
+  DESCRIPTOR = _PERSON
+
+class AddressBook(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ADDRESSBOOK
+
+```
+- `SerializeToString` : 메시지를 직렬화하여 문자열로 반환
+- `ParseFromString` : 메시지를 분석
+
+#### 메시지 작성
+1. 프로토콜 버퍼 클래스 인스턴스를 만든 후 출력 스트림에 써야 한다.
+2. `AddresssBook`파일에서 읽고 `Person` 입력에 따라 새 파일 다시 쓴다.
+
+```python
+import addressbook_pb2
+import sys
+
+def PromptForAddress(person):
+  pass
+
+address_book = addressbook_pb2.AddressBook()
+try:
+    f = open(sys.argv[1], "rb")
+    address_book.PromptForAddress(f.read())
+    f.close()
+except IOError:
+    print( sys.argv[1] + ": Could not open file.  Creating a new one.")
+
+PromptForAddress(address_book.people.add())
+
+f = open(sys.argv[1], "wb")
+f.write(address_book.SerializeToString())
+f.close()
+```
+#### 메시지 읽기
+```python
+def ListPeople(address_book):
+    pass
+
+address_book = addressbook_pb2.AddressBook()
+address_book.ParseFromString(f.read())
+f.close()
+
+ListPeople(address_book)
+```    
+
+*(출처) https://developers.google.com/protocol-buffers/docs/pythontutorial*
