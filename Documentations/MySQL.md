@@ -47,4 +47,4 @@ binary log는 MySQL 서버 인스턴스의 데이터 수정에 대한 정보를 
 ```
 
 #### 헤더 필드
-
+>>https://dev.mysql.com/doc/internals/en/event-header-fields.html

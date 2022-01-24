@@ -55,3 +55,4 @@ public enum Consistency {
 
 위에서 모든 쓰기는 primary 지역 복제본에서 처리된다. 쓰기는 WAL을 통해 미리 쓰기로 저장되고 다른 복제본에 비동기식으로 복제된다.
 
+>>https://hbase.apache.org/book.html#arch.timelineconsistent.reads
