@@ -1,4 +1,4 @@
-# IAM 
+# AWS IAM 
 >>Udemy
 IAM(Identity Access Management)은 Identity and Access Management, global service를 의미한다.
 
