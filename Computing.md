@@ -322,15 +322,25 @@ custom metric에 따라 스케일을 자동 조정할 수 있음
 
 # Lambda
 
+>>FAQ
+AWS Lambda는 서버를 프로비저닝하거나 관리할 필요없이 코드를 실행할 수 있다.
+
+
+
+
 >>Udemy
-### vs. EC2
+
+## vs. EC2
 - EC2 : virtual cloud / RAM, CPU에 제한 / 계속 실행됨 / 스케일링 직접 해야
 - Lambda : virtual functions / 짧은 실행 / on-demand / 자동 스케일링
-### Limits
+
+## Limits
 - 메모리 할당 : 128MB - 10GB
 - 최대 실행시간 : 900초
 - 디스크 : 512MB
 - 동시성 실행 : 1000
-### Lambda@Edge
+
+## Lambda@Edge
+
 - CloudFront로 CDN을 배포할 수 있음
 - ex. website security / SEO / dynamic web application
