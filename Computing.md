@@ -1,4 +1,4 @@
-# EC2 
+# Amazon EC2 
 >>Udemy
 ### EC2( Elastic Compute Cloud )
 - virtual machines를 빌려주고(EC2)
@@ -320,13 +320,28 @@ custom metric에 따라 스케일을 자동 조정할 수 있음
 - Aerage Network In / Out
 
 
-# Lambda
+# AWS Lambda
 
 >>FAQ
 AWS Lambda는 서버를 프로비저닝하거나 관리할 필요없이 코드를 실행할 수 있다.
 
+## AWS Lambda 함수
+- 코드는 '상태 비저장'로 작성되어야 한다. 로컬 파일 시스템 액세스, 하위 프로세스 등에 대한 아티팩트는 요청 수명 기간 이상이상 확잘될 수 없으며 모든 지속 상태는 S3, DynamoDB, EFS 등에 저장되어야 한다.
 
+- 함수 인스턴스를 보존하고 새로 사본을 만드는 대신 이를 재사용하여 후속 요청에 사용
+- 자체 /tmp 디렉토리에 500MB의 비영구 디스크 공간이 제공됨
+- 상태 비저장으로 유지하면 Lambda에서 필요한 만큼 함수 사본을 빠르게 시작하여 수신 이벤트 비율에 따라 조정 가능
+- 함수 내에서 스레드와 프로세스 사용 가능
 
+### AWS 이벤트 처리
+- 이벤트 소스는 AWS Lambda 함수를 실행하도록 트리거하는 이벤트 생성하는 어플리케이션
+### 어플리케이션 구축
+- Lambda 기반 어플리케이션은 이벤트에 의해 트리거되는 함수로 구성됨
+### 프로비저닝된 동시성
+- 프로비저닝된 동시성을 통해 서버리스 어플리케이션 성능을 보다 강력하게 제어
+### Lambda@Edge
+- 서버를 프로비저닝하거나 관리하지 않고 AWS edge 로케이션에서 코드를 실행할 수 있으므로 가장 짧은 네트워크 지연 시간을 가짐
+- 뷰어가 전 세계에 분산되어 있고 지연 시간에 민감한 사용 사례에 최적화되어 있음
 
 >>Udemy
 
@@ -341,6 +356,16 @@ AWS Lambda는 서버를 프로비저닝하거나 관리할 필요없이 코드�
 - 동시성 실행 : 1000
 
 ## Lambda@Edge
-
+- 서버를 프로비저닝하지 않고 글로벌 AWS 엣지 로케이션에서 실행하여 가장 짧은 네트워크로 응답
 - CloudFront로 CDN을 배포할 수 있음
 - ex. website security / SEO / dynamic web application
+
+# Amazon ECS
+
+# Amazon EKS
+
+# AWS Fargate
+
+# AWS Elastic Beanstalk
+
+# ELB(Elastic Load Balancing)
