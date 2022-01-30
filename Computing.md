@@ -356,7 +356,7 @@ AWS Lambda는 서버를 프로비저닝하거나 관리할 필요없이 코드�
 - 동시성 실행 : 1000
 
 ## Lambda@Edge
-
+- 서버를 프로비저닝하지 않고 글로벌 AWS 엣지 로케이션에서 실행하여 가장 짧은 네트워크로 응답
 - CloudFront로 CDN을 배포할 수 있음
 - ex. website security / SEO / dynamic web application
 
