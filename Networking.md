@@ -90,6 +90,16 @@ NAT = Network Address Translation
 - Internet Gateway가 필요한데,  private subnet -> NATGW -> IGW로 작동한다.
 
 # Amazon API Gateway
+>>FAQ
+
+API Gateway는 트래픽 관리, 권한 부여 및 엑세스 제어, 모니터링를 비롯해 최대 수십만 건의 동시 API 호출을 수락, 처리하는데 관련된 모든 작업을 처리한다.백엔드용 API를 생성하고 운영하는 것과 관련된 모든 측면을 처리하는 managed service를 제공한다.
+
+다음과 같은 API 유형이 있다.
+- HTTP API :  Lambda 함수, HTTP 백엔드로 프록시를 통해 전송하는 API를 구축하는데 최적화, 서버리스 워크로드에 적합
+- REST API : API 프록시 기능과 API 관리 기능을 제공
+- WebSocker API : 연결된 클라이언트 간에 영구 연결을 유지하여 실시간 메시지 통신을 가능하게 함. 연결된 클라이언트의 메시지가 수신될 때 AWS Lambda함수, Kinesis 또는 모든 HTTP 엔드포인트와의 백엔드 통합을 정의할 수 있다.
+
+- HTTPS 엔드포인트를 생성할 수 있다.
 
 # Amazon CloudFront
 
