@@ -322,7 +322,6 @@ custom metric에 따라 스케일을 자동 조정할 수 있음
 
 # AWS Lambda
 
->>FAQ
 AWS Lambda는 서버를 프로비저닝하거나 관리할 필요없이 코드를 실행할 수 있다.
 
 ## AWS Lambda 함수
