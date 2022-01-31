@@ -30,7 +30,22 @@ DNS 서버는 이름을 IP주소로 변환하여 도메인 이름을 웹 브라�
     - 사용 가능한 모든 위치에서 DNS 쿼리에 응답할 수 있도록 글로벌 레코드를 구성하길 권장됨
 - 지역 기반 라우팅 vs. 지역 DNS 기능 : 지역 DNS는 요청이 발생한 지리적 위치에 따라 라우팅을, 지역 기반 라우팅은 최종 사용자 네트워크와 AWS 데이터 센터간 지연 시간 측정값을 기반으로 라우팅을 제공함. 최종 사용자 지연 시간 최소화가 목표이면 지역 시간 기반 라우팅을 사용하는 것이 좋음
 
+
 # Amazon VPC
+>>FAQ
+AWS 클라우드에서 논리적으로 격리된 공간을 프로비저닝하고 자체 IP 주소 선택이나 서브넷 생성 등 가상 네트워킹 환경을 제어할 수 있다.
+다음과 같이 구성된다.
+- Virtual Private Cloud
+- 서브넷
+- 인터넷 게이트웨이
+- NAT 게이트웨이
+- 피어링 연결
+- VPC 엔드포인트
+
+## IP 주소 범위 지정
+- 모든 IPv4주소 범위를 기본 CIDR 블록에 사용 가능
+- VPC를 생성할 때 단일 CIDR IP 주소 범위를 기본 CIDR 블록으로 할당하고 VPC를 생성한 후 최대 4개의 보조 CIDR 블록을 추가할 수 있다.
+
 >>Udemy
 
 ![](./img/2022-01-13-13-33-57.png)
@@ -75,6 +90,16 @@ NAT = Network Address Translation
 - Internet Gateway가 필요한데,  private subnet -> NATGW -> IGW로 작동한다.
 
 # Amazon API Gateway
+>>FAQ
+
+API Gateway는 트래픽 관리, 권한 부여 및 엑세스 제어, 모니터링를 비롯해 최대 수십만 건의 동시 API 호출을 수락, 처리하는데 관련된 모든 작업을 처리한다.백엔드용 API를 생성하고 운영하는 것과 관련된 모든 측면을 처리하는 managed service를 제공한다.
+
+다음과 같은 API 유형이 있다.
+- HTTP API :  Lambda 함수, HTTP 백엔드로 프록시를 통해 전송하는 API를 구축하는데 최적화, 서버리스 워크로드에 적합
+- REST API : API 프록시 기능과 API 관리 기능을 제공
+- WebSocker API : 연결된 클라이언트 간에 영구 연결을 유지하여 실시간 메시지 통신을 가능하게 함. 연결된 클라이언트의 메시지가 수신될 때 AWS Lambda함수, Kinesis 또는 모든 HTTP 엔드포인트와의 백엔드 통합을 정의할 수 있다.
+
+- HTTPS 엔드포인트를 생성할 수 있다.
 
 # Amazon CloudFront
 
