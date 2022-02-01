@@ -360,11 +360,30 @@ AWS Lambda는 서버를 프로비저닝하거나 관리할 필요없이 코드�
 - ex. website security / SEO / dynamic web application
 
 # Amazon ECS
+ECS( Elastic Container Services ) docker 컨테이너를 지원하는 확장성과 성능이 뛰어난 컨테이너 관리 서비스로, EC2 인스턴스의 관리형 클러스터에서 실행 가능하다. ECS를 사용하면 자체 클러스터 관리 인프라를 직접 설치, 운영할 필요가 없다.
+
+간편하게 컨테이너를 어플리케이션의 빌딩 블록으로 사용할 수 있는 이점이 있다.
+- Amazon EC2 인스턴스에서 실행되도록 컨테이너를 예약하거나 AWS Fargate를 통해 실행하고 EC2에 제공하는 것과 동일한 격리 제어와 규정에 따라 설정함
 
 # Amazon EKS
+Amazon EKS( Elastic Kubernetes Service )는 자체 Kubernetes 제어 영역이나 worker 노드를 설치, 운영할 필요 없이 AWS에서 Kubernetes를 손쉽게 실행할 수 있도록 지원하는 managed service이다. 
+
+여러 AZ에 걸쳐 API 서버 및 백엔드를 포함하여 Kubernetes를 프로비저닝하고 확장할 수 있는 이점이 있다. 
 
 # AWS Fargate
+AWS Fargate는 컨테이너에 적합한 서버리스 컴퓨팅 엔진으로 ECS EKS와 연동된다. 
+
+- ECS, EKS는 Fargate를 통해 프로비저닝된 컨테이너를 사용하여 자동으로 컨테이너 크기를 조정하고 로드 밸런싱한다. 
 
 # AWS Elastic Beanstalk
+어플리케이션 배포를 관리한다.
+- 어플리케이션 파일을 S3에 저장하고, 선택적으로 서버 로그 파일을 저장한다. S3 버킷이 자동으로 생성되어 업로드한 파일이 자동으로 복사된다.
+- 자동으로 RDS 인스턴스를 프로비저닝할 수 있다. 
+- 어플리케이션 자체는 누구나 액세스할 수 있으나 VPC 내에서는 비공개적인 공간에 프로비저닝한다. 
 
 # ELB(Elastic Load Balancing)
+ELB는 4가지 유형의 로드 밸런서를 지원한다. 
+- HTTP 요청을 로드 밸런싱해야 하는 경우 ALB(Application Load Balancer)를 사용한다.
+- 네트워크/전송 프로토콜(TCP, UDP) 로드 밸런싱이나 latency가 낮아야 하는 경우  Network Load Balancer를 사용한다.
+- 어플리케이션이 EC2 Classic 네트워크 안에 구축된 경우 Classic Load Balancer를 사용한다.
+- third party 가상 appliance를 배포하고 실행하는 경우 Gateway Load Balancer를 사용한다.
