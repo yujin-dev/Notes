@@ -17,3 +17,5 @@ My tech diary
 - 2.21
   - [AWS EC2 FAQ 정리](https://www.notion.so/059be967400449d685df6dd690263574) hibernate까지
   - [SSH Tunneling](https://www.notion.so/SSH-Tunneling-74e25afe877647b68422c0202935b0ff)
+- 2.25
+  - [Kubernetes Udemy 강의 정리](https://www.notion.so/Overview-d5fc03e64ed745088945aeebb6bb3fcb)
