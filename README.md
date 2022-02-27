@@ -19,3 +19,5 @@ My tech diary
   - [SSH Tunneling](https://www.notion.so/SSH-Tunneling-74e25afe877647b68422c0202935b0ff)
 - 2.25
   - [Kubernetes Udemy 강의 정리](https://www.notion.so/Overview-d5fc03e64ed745088945aeebb6bb3fcb)
+- 2.27
+  - Kubernetes Udemy 강의 : Pods/Replicaset/Deployment/Services
