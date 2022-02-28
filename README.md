@@ -21,3 +21,5 @@ My tech diary
   - [Kubernetes Udemy 강의 정리](https://www.notion.so/Overview-d5fc03e64ed745088945aeebb6bb3fcb)
 - 2.27
   - Kubernetes Udemy 강의 : Pods/Replicaset/Deployment/Services
+- 2.28
+  - [AWS Lambda 런타임 동작 원리](https://www.notion.so/059be967400449d685df6dd690263574#7a8659d4ae14498aad4855959f654097)
