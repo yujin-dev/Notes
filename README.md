@@ -17,3 +17,4 @@ daily tech posting
 - Kubernetes Udemy 강의 : Pods/Replicaset/Deployment/Services
 - [AWS Lambda 런타임 동작 원리](https://www.notion.so/059be967400449d685df6dd690263574#7a8659d4ae14498aad4855959f654097)
 - [Airflow KubernetesPodOperator](https://www.notion.so/Operator-e926a0f7c4fa411095f2d823784f305d)
+  - [KubernetesPodOperator로 Airflow 잘 활용하기](https://www.notion.so/KubernetesPodOperator-e926a0f7c4fa411095f2d823784f305d#7c6a82aaa7454453bafd3f9a8280870b)
