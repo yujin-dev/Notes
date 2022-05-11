@@ -157,3 +157,11 @@ OOM Killer는 Heuristic하게 프로세스를 종료시킨다.
 - `exit 100`은 스크립트를 종료하면서 100을 반환한다는 것이다.
 
 *(출처) https://gracefulprograming.tistory.com/70*
+
+
+## json parser
+json 형식의 데이터에서 원하는 key값에 맞는 value를 추출하기 위해 `jq`를 이용한다.
+```console
+$ sudo apt-get install jq
+$ echo "$json" | jq -r '.access_token'
+```
