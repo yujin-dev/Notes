@@ -1,4 +1,4 @@
-> 
+> 빠르게 살펴보는 IT 보안
 
 ## IPS, IDS, Firewall
 - IPS : 네트워크 트래픽을 스캐닝하여 악성 공격을 감지하고 방어한다.( ex. Dos, DDos )
@@ -38,3 +38,16 @@ NAT Forwarding Table에 IP주소 + 포트번호 정보를 보관하여 사용한
 - 브라우저(클라이언트) : DNS Resolver에 요청한다.
 - DNS Resolver : 도메인의 정보를 요청하고 캐시하는 서버로 DNS 서버에 요청한다.
 - DNS Server : DNS 정보를 알려주는 서버이다.
+
+## Root CA
+Root CA 인증서는 CA에서 자체 서명한 인증서로, 공개키 기반 암호화를 사용한다.  
+디지털 인증서는 보안이 필요한 인터넷 통신에서 상대방이 통신하고자 하는 대상이 맞음을 확인시켜준다.
+- server -> CA : 사용자에서 keypair를 생성하여 CA에 신원을 증명한다.
+- CA -> server : 인증서를 발급한다.
+- server -> browser : 공개키를 포함한 인증서를 전달한다.
+- browser -> CA : 인증서 확인을 요청하고 CA에서 확인한다.
+- browser -> server : 공개키로 암호화된 데이터를 전달한다.
+- server : 비밀키로 데이터 복호화 및 열람한다.
+
+## HSTS(HTTP Strict Transport Security)
+HTTPS 요청에 대해서만 응답하도록 한다. HSTS에 등록되어 있으면 상태코드 307을 내뱉고 HTTPS로 재전송한다.
