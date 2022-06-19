@@ -96,3 +96,63 @@ CPU가 늘어나면 프로세서 간에 통신하는데 비효율성이 발생�
 - microkernels : 마이크로커널은 커널에서 핵심적인 요소만 남기는 구조이다. 
 - modules : 모듈은 커널은 확장하기 위한 구조로, 장치 드라이버는 모듈로 구현되어 있다. ex: 윈도우의 .dll파일
 - hybrid system : OS 구조의 최신판으로, 커널의 핵심만 남기고 나머지 기능은 따로 구현한다. 
+
+# [Ch.3](https://parksb.github.io/article/7.html)
+
+프로세스는 stack/heap/data/code로 구성된다.
+## process state
+프로세스 상태는 다음과 같다.
+- New : 프로세스 처음 생성됨
+- Ready : 프로세스가 프로세서 할당을 대기
+- Running : 프로세스가 할당되어 실행
+- Waiting : 프로세스가 이벤트를 대기
+- Terminated : 프로세스 실행 완료
+
+## PCB(Process Control Block)
+각각의 프로세스에는 아래와 같은 정보가 담긴 PCB를 포함하고 있다.
+- 프로세스 상태
+- 프로그램 카운터 : 프로세스가 이어서 실행할 명령의 주소를 담은 카운터
+- CPU 레지스터 : 프로세스가 인터럽트 후에 작업을 이어가기 위한 CPU 레지스터 값
+- CPU 스케줄링 정보 : 프로세스의 중요도, 스케줄링 큐 포인터 등 스케줄링 정보
+- 메모리 정보
+- 회계 정보(CPU 사용량, 프로세스 갯수 등)
+- 입출력 정보(프로세스에 할당된 입출력 장치나 열린 파일 목록 등)
+
+## Process Scheduling
+프로세스 스케줄링은 어떤 프로세스를 프로세서에 할당할 것인지 결정하여 멀티프로그래밍과 타임쉐어링이 가능하도록 한다.
+
+### Scheduling Queue
+- Job queue : 프로세스가 시스템에 진입
+- Ready queue : 메인 메모리에서 실행을 대기
+- Device queue : 입출력 장치 대기
+
+### Scheduler
+- Job scheduler( Long-term scheduler ) : Ready queue -> 프로세스로 옮기는 작업
+- CPU scheduler( Short-term scheduler ) : 프로세스를 프로세서에 할당하는 작업 
+
+## Context Switch
+**Context Switch**란 인터럽트 발생으로 OS가 개입하여 프로세서에 할당된 프로세스를 바꾸는 것을 의미한다. 여기서 광범위한 의미의 context란 시스템에서 활용 가능하며, 모니터링된 정보를 뜻하고 프로세서 관점에서 context=PCB이기에, PBC 정보가 바뀌는 것을 뜻한다.
+
+## IPC(Interprocess Communication)
+
+### Message passing
+송수신 프로세스 간에 커널을 통해 정보를 전달하는 방식인데, context switch가 발생하기에 속도가 다소 느리다. 
+
+### Shared memory
+메모리 공간의 한 부분을 여러 프로세스가 공유하여 사용한다. 커널을 거치지 않기에 속도가 빠르지만, 메모리의 동시 접근 방지를 위한 규칙이 필요하다.
+
+### Producer-Consumer problem
+- producer : 정보를 생산하는 프로세스
+- consumer : 정보를 소비하는 프로세스
+
+Producer-Consumer problem은 위의 두 프로세스가 동시에 동작할 때 일어나는 문제를 의미한다. 정보를 생산하는 속도가 소비하는 속도보다 빠르기에, 버퍼를 사용하는 경우를 일컫는다.
+
+### 동기화
+message passing에서 동기화 문제를 해결하기 위한 몇 가지 방식이 있다.
+- blocking send
+- blocking receive
+- non-blocking send
+- non-blocking receive
+
+## Pipe
+**pipe**란 부모 프로세스와 자식 프로세스가 정보를 주고 받을 때 사용하는 방식이다. 단방향 통신만 가능하기에 양방향 통신의 경우 2개의 파이프가 필요하다. named pipe는 부모-자식 프로세스 관계가 아닌 경우에도 사용이 가능하다.
