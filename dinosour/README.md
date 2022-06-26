@@ -176,11 +176,11 @@ User thread와 Kernel thread간의 관계를 설계하는 방법에 몇 가지�
 
 #### Many-to-One model
 유저 스레드 : 커널 스레드 = N : 1관계이다. 한 번에 하나의 유저 스레드만 커널에 접근이 가능하기에 멀티코어 시스템에서 병렬 수행이 불가하다.
-### One-to-One model
+#### One-to-One model
 유저 스레드 : 커널 스레드 = 1 : 1관계이다. 멀티프로세서 시스템에서 동시에 여러 스레드 수행이 가능하나, 유저 스레드에 따라 비례적으로 커널 스레드가 늘어가 성능 저하가 발생할 수 있다.
-### Many-to-Many model
+#### Many-to-Many model
 유저 스레드 : 커널 스레드 = N : N관계이다. 유러저 스레드보다 적거나 같은 수의 커널 스레드가 생성된다.
-### Two-level model
+#### Two-level model
 유저 스레드 : 커널 스레드 = N : 1관계이며, 특정 유저 스레드를 위한 커널 스레드가 제공된다.
 
 ### Thread Pools
