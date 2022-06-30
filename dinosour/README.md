@@ -185,3 +185,5 @@ User thread와 Kernel thread간의 관계를 설계하는 방법에 몇 가지�
 
 ### Thread Pools
 스레드를 요청할 때마다 생성하면 성능이 저하되기에 미리 스레드 풀을 생성하여 해당 풀에서 스레드를 할당하는 방식이다.
+
+# [Ch.5](https://parksb.github.io/article/9.html)
