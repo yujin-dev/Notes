@@ -190,6 +190,7 @@ User thread와 Kernel thread간의 관계를 설계하는 방법에 몇 가지�
 프로세스 스케줄링은 운영체제가 어떤 프로세스를 프로세서에 할당할 것(Dispatch라고 함)인지 결정한다.  
 *선점 방식*은 운영체제가 강제로 프로세스를 통제하는 방식이고, *비선점 방식*은 프로세스가 자체적으로 다음 프로세스에 넘겨주는 방식이다.
 
+## Scheduling Type
 ### FCFS
 - First Come Fist Served : 먼저 들어온 프로세스를 먼저 할당한다.
 - Convoy effect : 수행 시간이 긴 프로세스가 먼저 들어오면 뒤에 따르는 프로세스의 대기 시간이 커진다.
@@ -213,3 +214,14 @@ User thread와 Kernel thread간의 관계를 설계하는 방법에 몇 가지�
 ### Priority Scheduling
 - 프로세스에 우선순위를 부여하여 순위에 따라 할당한다.
 - 다른 스케줄링 알고리즘과 결합하여 사용이 가능하여 선점, 비선점 스케줄링이 가능하다.
+
+# [Ch.6](https://parksb.github.io/article/10.html)
+프로세스가 동시에 실행될 때 데이터가 동기화되지 않는 문제가 있을 수 있다. *Race Condition*은 프로세스가 데이터에 접근하는 순서에 따라 결과가 달라질 수 있는 상황을 의미한다.
+
+## Critical-Section
+*critical-section*이란 코드에서 Race Condition이 발생할 수 있는 구간을 의미한다.
+critical section 문제를 해결하기 위해서 아래 조건을 따라야 한다.
+- Mutual Exclution : critical section에 프로세스가 작업 중이라면 다른 프로세스가 개입할 수 없다.
+- Progress : critical section에서 작업하는 프로세스가 없다면 다른 프로세스가 진입할 수 있다.
+- Bounded Waiting : critical section에 프로세스가 진입하는데 무한정 대기하지 않는다.
+
