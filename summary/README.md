@@ -1,4 +1,4 @@
-> [박성범님의 공룡책으로 정리하는 운영체제](https://parksb.github.io/articles.html)를 참고하여 정리하였다.
+*[박성범님의 공룡책으로 정리하는 운영체제](https://parksb.github.io/articles.html)를 참고하여 정리*
 
 # [Ch.1](https://parksb.github.io/article/5.html)
 **운영체제**는 컴퓨터의 하드웨어를 관리하고, 하드웨어 - 소프트웨어 - 사용자를 매개하는 프로그램이다.  

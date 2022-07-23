@@ -1,3 +1,4 @@
+*<HPC Lab. KOREATECH김덕수> 교수님의 운영체제 강의를 듣고 정리한 공간*
 # Virtual Memory Management
 
 가상 메모리는 사용자 프로그램을 block단위로 분할한 non-continuous allocation이다.
@@ -64,6 +65,6 @@ page/segment를 어디에 적재할 것인가에 대한 문제이다.
 ### Load Control 전략
 시스템의 multi-programming degres를 조절한다. 저부하나 고부하 상태를 피하기 위해 적정 수준으로 유지해야 한다.
 
-![](./img/2021-09-24-16-55-09.png)
+![](../img/2021-09-24-16-55-09.png)
 
 - thrashing: 과도한 page fault가 발생하는 경우로 과부하 상태이다.
